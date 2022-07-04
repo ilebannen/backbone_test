@@ -16,6 +16,7 @@ class Settlement extends Model
     protected $fillable = [
         'name',
         'zone_type',
+        'key'
     ];
 
     /**
@@ -30,12 +31,6 @@ class Settlement extends Model
         'updated_at',
         'pivot'
     ];
-
-    protected $appends = ['key'];
-
-    public function getKeyAttribute() {
-        return $this->id;
-    }
 
     public function settlementType()
     {

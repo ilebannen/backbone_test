@@ -22,6 +22,7 @@ class ZipcodeSeeder extends Seeder
         $settlements = [];
         $zipCodes = [];
         $countZips = 1;
+        $countSettlements = 1;
         foreach($lines as $i => $line) {
             if ($i<2) continue;
             $line = mb_convert_case($line, MB_CASE_UPPER, "UTF-8");
@@ -71,7 +72,8 @@ class ZipcodeSeeder extends Seeder
                     'federal_entity_id' => intval($c_estado),
                     'municipality_id' => intval($c_mnpio),
                 ]);
-                $zipCodes[$d_codigo] = $countZips++;
+                $zipCodes[$d_codigo] = $countZips;
+                $countZips++;
             }
 
             if (!isset($settlementTypes[$c_tipo_asenta])) { 
@@ -82,22 +84,24 @@ class ZipcodeSeeder extends Seeder
                 $settlementTypes[$c_tipo_asenta] = true;
             }
 
-            if (!isset($settlements[$id_asenta_cpcons])) { 
+            //if (!isset($settlements[$c_mnpio.'_'.$id_asenta_cpcons])) { 
                 \DB::table('settlements')->insert([
-                    'id' => intval($id_asenta_cpcons),
+                    'id' => $countSettlements,
+                    'key' => intval($id_asenta_cpcons),
                     'name' => $d_asenta,
                     'zone_type' => $d_zona,
                     'settlement_type_id' => intval($c_tipo_asenta)
                 ]);
-                $settlements[$id_asenta_cpcons] = true;
-            }
+                $settlements[$c_mnpio.'_'.$id_asenta_cpcons] = $countSettlements;
+                
+            //}
 
             \DB::table('zipcode_settlement')->insert([
                 'zipcode_id' => $zipCodes[$d_codigo],
-                'settlement_id' => intval($id_asenta_cpcons)
+                'settlement_id' => $countSettlements
             ]);
 
-            $countZips++;
+            $countSettlements++;
         }
     }
 }
