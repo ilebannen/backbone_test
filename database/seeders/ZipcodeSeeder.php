@@ -15,7 +15,7 @@ class ZipcodeSeeder extends Seeder
     public function run()
     {
         $content = \File::get(storage_path('CPdescarga.txt'));
-        $lines = explode("\r\n", $content);
+        $lines = explode("\n", $content);
 
         $municipalities = [];
         $federalEntities = [];
