@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use PhpParser\Node\Scalar\MagicConst\Line;
 
 class ZipcodeSeeder extends Seeder
 {
@@ -27,7 +25,6 @@ class ZipcodeSeeder extends Seeder
         foreach($lines as $i => $line) {
             if ($i<2) continue;
             $line = mb_convert_case($line, MB_CASE_UPPER, "UTF-8");
-            //$line = strtr($line,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
             $line = iconv('utf-8', 'us-ascii//TRANSLIT', $line);
 
             $fields =  explode("|", $line);
