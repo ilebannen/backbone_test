@@ -96,6 +96,8 @@ class ZipcodeSeeder extends Seeder
                 'zipcode_id' => $zipCodes[$d_codigo],
                 'settlement_id' => intval($id_asenta_cpcons)
             ]);
+
+            $countZips++;
         }
     }
 }
