@@ -26,6 +26,8 @@ class ZipcodeSeeder extends Seeder
         foreach($lines as $i => $line) {
             if ($i<2) continue;
             $line = mb_convert_case($line, MB_CASE_UPPER, "UTF-8");
+            $line = strtr($line,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+
             $fields =  explode("|", $line);
             if(count($fields) < 15) continue;
             
