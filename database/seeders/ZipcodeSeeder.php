@@ -90,8 +90,7 @@ class ZipcodeSeeder extends Seeder
                     'id' => intval($id_asenta_cpcons),
                     'name' => $d_asenta,
                     'zone_type' => $d_zona,
-                    'settlement_type_id' => intval($c_tipo_asenta),
-                    'zipcode_id' => $zipCodes[$d_codigo],
+                    'settlement_type_id' => intval($c_tipo_asenta)
                 ]);
                 $settlements[$id_asenta_cpcons] = true;
             }
