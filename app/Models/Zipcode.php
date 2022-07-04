@@ -26,23 +26,25 @@ class Zipcode extends Model
      */
     protected $hidden = [
         'id',
+        'federal_entity_id',
+        'municipality_id',
         'created_at',
         'updated_at',
     ];
 
-    public function federal_entity()
+    public function federalEntity()
     {
-        return $this->hasOne(FederalEntity::class);
+        return $this->hasOne(FederalEntity::class, 'id', 'federal_entity_id');
     }
 
     public function settlements()
     {
-        return $this->hasMany(Settlement::class, 'zip_code_id', 'id');
+        return $this->hasMany(Settlement::class, 'zipcode_id', 'id');
     }
 
     public function municipality()
     {
-        return $this->hasOne(Municipality::class);
+        return $this->hasOne(Municipality::class, 'id', 'municipality_id');
     }
 
 }

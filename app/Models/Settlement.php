@@ -25,12 +25,20 @@ class Settlement extends Model
      */
     protected $hidden = [
         'id',
+        'settlement_type_id',
+        'zipcode_id',
         'created_at',
         'updated_at',
     ];
 
+    protected $appends = ['key'];
+
+    public function getKeyAttribute() {
+        return $this->id;
+    }
+
     public function settlementType()
     {
-        return $this->hasOne(SettlementType::class);
+        return $this->hasOne(SettlementsType::class, 'id', 'settlement_type_id');
     }
 }

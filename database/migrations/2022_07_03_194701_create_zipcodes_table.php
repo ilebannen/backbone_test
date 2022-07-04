@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('zipcodes', function (Blueprint $table) {
             $table->id();
-            $table->string('zip_code');
+            $table->string('zip_code')->unique();
             $table->string('locality');
             $table->unsignedBigInteger('federal_entity_id');
             $table->unsignedBigInteger('municipality_id');

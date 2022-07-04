@@ -29,4 +29,10 @@ class FederalEntity extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected $appends = ['key'];
+
+    public function getKeyAttribute() {
+        return $this->id;
+    }
 }

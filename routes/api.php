@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ZipcodesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/zip-codes', function (Request $request) {
-    return response()->json(['test'=>'asdasd']);
-});
+Route::get('/zip-codes/{zipcode}', [ZipcodesController::class, 'show']);
