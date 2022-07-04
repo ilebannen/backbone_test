@@ -33,7 +33,7 @@ class ZipcodeSeeder extends Seeder
             
             $d_codigo = $fields[0];
             $d_asenta = $fields[1];
-            $d_tipo_asenta = $fields[2];
+            $d_tipo_asenta = ucfirst(strtolower($fields[2]));
             $D_mnpio = $fields[3];
             $d_estado = $fields[4];
             $d_ciudad = $fields[5];
