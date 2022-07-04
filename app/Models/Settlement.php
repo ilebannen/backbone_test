@@ -26,9 +26,9 @@ class Settlement extends Model
     protected $hidden = [
         'id',
         'settlement_type_id',
-        'zipcode_id',
         'created_at',
         'updated_at',
+        'pivot'
     ];
 
     protected $appends = ['key'];
@@ -40,5 +40,10 @@ class Settlement extends Model
     public function settlementType()
     {
         return $this->hasOne(SettlementsType::class, 'id', 'settlement_type_id');
+    }
+
+    public function zipcodes()
+    {
+        return $this->belongsToMany(Zipcode::class, 'zipcode_settlement');
     }
 }

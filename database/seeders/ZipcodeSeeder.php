@@ -95,6 +95,11 @@ class ZipcodeSeeder extends Seeder
                 ]);
                 $settlements[$id_asenta_cpcons] = true;
             }
+
+            \DB::table('zipcode_settlement')->insert([
+                'zipcode_id' => $zipCodes[$d_codigo],
+                'settlement_id' => intval($id_asenta_cpcons)
+            ]);
         }
     }
 }

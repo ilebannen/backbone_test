@@ -30,6 +30,7 @@ class Zipcode extends Model
         'municipality_id',
         'created_at',
         'updated_at',
+        'pivot'
     ];
 
     public function federalEntity()
@@ -39,7 +40,7 @@ class Zipcode extends Model
 
     public function settlements()
     {
-        return $this->hasMany(Settlement::class, 'zipcode_id', 'id');
+        return $this->belongsToMany(Settlement::class,'zipcode_settlement')->withPivot([]);
     }
 
     public function municipality()

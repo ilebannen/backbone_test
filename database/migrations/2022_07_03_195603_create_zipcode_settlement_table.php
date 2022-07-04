@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('settlements', function (Blueprint $table) {
+        Schema::create('zipcode_settlement', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('zone_type');
-            $table->unsignedBigInteger('settlement_type_id');
+            $table->unsignedBigInteger('zipcode_id');
+            $table->unsignedBigInteger('settlement_id');
 
-            $table->foreign('settlement_type_id')->references('id')->on('settlements_types');
+            $table->foreign('zipcode_id')->references('id')->on('zipcodes');
+            $table->foreign('settlement_id')->references('id')->on('settlements');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settlements');
+        Schema::dropIfExists('zipcode_settlement');
     }
 };
