@@ -13,6 +13,12 @@ docker run --rm \
     composer install --ignore-platform-reqs
 ```
 
+Envs vars
+
+```
+cp .env.example .env
+```
+
 Para levantar el servicio
 
 ```
@@ -22,6 +28,5 @@ Para levantar el servicio
 Para inicializar la DB y los datos
 
 ```
-./vendor/bin/sail artisan migrate:refresh
-./vendor/bin/sail artisan db:seed
+./vendor/bin/sail artisan zip:generate-cache
 ```
